@@ -1,17 +1,17 @@
 <?php
 declare(strict_types=1);
-
 namespace MyProject\Classes;
 
-abstract class AbstractUser {
-    protected string $username;
-    protected string $password;
-
-    public function __construct(string $username, string $password) {
-        $this->username = $username;
-        $this->password = $password;
-    }
-
-    abstract public function showInfo();
-}
-
+/*
+ * User AbstractUser - абстрактный класс 
+ */ 
+abstract class AbstractUser
+	{
+      	/*
+ * Функция вывода значение свойств класса
+ * @param string $name, string $login, string $password
+ * @return св-ва классов $this->name, $this->login, $this->password, $this->role
+ */	 
+		abstract public function showInfo();
+		
+	}
