@@ -117,31 +117,34 @@ class AlphabeticalOrderIterator implements \Iterator
         $this->reverse = $reverse;
     }
 
-    public function rewind()
+    public function rewind(): void
     {
         $this->position = $this->reverse ?
-            count($this->collection->getItems()) - 1 : 0;
+        count($this->collection->getItems()) - 1 : 0;
     }
 
-    public function current()
+
+    public function current(): mixed
     {
         return $this->collection->getItems()[$this->position];
     }
 
-    public function key()
+    public function key(): mixed
     {
         return $this->position;
     }
 
-    public function next()
+    public function next(): void
     {
-        $this->position = $this->position + ($this->reverse ? -1 : 1);
+        $this->position += $this->reverse ? -1 : 1;
     }
 
-    public function valid()
+
+    public function valid(): bool
     {
         return isset($this->collection->getItems()[$this->position]);
     }
+
 }
 
 /**
@@ -190,13 +193,13 @@ $collection->addItem("First");
 $collection->addItem("Second");
 $collection->addItem("Third");
 
-echo "Straight traversal:\n";
+echo "Прямой обход:\n";
 foreach ($collection->getIterator() as $item) {
     echo $item . "\n";
 }
 
 echo "\n";
-echo "Reverse traversal:\n";
+echo "Обратный обход:\n";
 foreach ($collection->getReverseIterator() as $item) {
     echo $item . "\n";
 }
