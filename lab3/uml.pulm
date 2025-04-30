@@ -1,0 +1,28 @@
+@startuml UserSystem
+
+class User {
+  - email: string
+  - password: string
+  - firstName: string
+  - lastName: string
+  + getEmail(): string
+  + getFirstName(): string
+  + getLastName(): string
+  + getMaskedPassword(): string
+}
+
+class Users {
+  - users: User[]
+  + getUsers(): User[]
+  
+}
+
+abstract class Router {
+  + parse(): Users
+  + {abstract} render(): string
+}
+
+Users "1" *-- "*" User
+Router --> Users : creates
+
+@enduml
